@@ -1,5 +1,6 @@
 import { debuglog } from "./main";
 import { Entity, ItemStack } from "@minecraft/server";
+import { QueueLootDrop } from "./LootDropQueue";
 import { LootTableCondition, ParseConditionInput } from "./LootTableCondition";
 
 export type ParseLootTableEntryInput = {
@@ -29,7 +30,12 @@ export class LootTableEntry {
     if (debuglog) {
       console.warn(`dropping ${this.name} x (1) at: ${JSON.stringify(deadEntity.location)}`);
     }
-    deadEntity.dimension.spawnItem(new ItemStack(this.name, 1), deadEntity.location);
+    const item: ItemStack = new ItemStack(this.name, 1);
+    try {
+      deadEntity.dimension.spawnItem(item, deadEntity.location);
+    } catch {
+      QueueLootDrop(deadEntity.dimension, deadEntity.location, item, Date.now());
+    }
   }
 
   parse(input: ParseLootTableEntryInput): void {

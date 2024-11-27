@@ -2,9 +2,9 @@
   "format_version": 2,
   "header": {
     "name": "Extended Loot Tables",
-    "description": "Extended Loot Tables v1.0.0",
+    "description": "Extended Loot Tables v1.0.1",
     "uuid": "792854bf-38d5-445c-9b12-b22f01762576",
-    "version": [1, 0, 0],
+    "version": [1, 0, 1],
     "min_engine_version": [1, 21, 40]
   },
   "modules": [
@@ -13,7 +13,7 @@
       "language": "javascript",
       "type": "script",
       "uuid": "9b96c5ea-da0c-4224-aa9f-924a90c1d0c1",
-      "version": [1, 0, 0],
+      "version": [1, 0, 1],
       "entry": "scripts/main.js"
     }
   ],
