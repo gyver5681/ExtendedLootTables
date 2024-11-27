@@ -1,0 +1,26 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Extended Loot Tables",
+    "description": "Extended Loot Tables v1.0.0",
+    "uuid": "792854bf-38d5-445c-9b12-b22f01762576",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 40]
+  },
+  "modules": [
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "9b96c5ea-da0c-4224-aa9f-924a90c1d0c1",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.15.0"
+    }
+  ]
+}
