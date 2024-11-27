@@ -1,7 +1,7 @@
 # ExtendedLootTables
 Extended Loot Tables Behavior Pack.
 
-Extend Entity on death Loot Tables via script, instead of overriding entity and loot table files in your resource pack.
+Extend Entity on death Loot Tables via script, instead of overriding vanilla entity and loot table files in your behavior pack.
 
 This addon does not yet cover all loot table conditions or scenarios in which loot tables can be used in the game. I'll do my best to add more functionality, but I'm also more than happy to accept pull requests from anyone looking to add to the project.
 
