@@ -34,6 +34,9 @@ export class LootTableEntry {
     try {
       deadEntity.dimension.spawnItem(item, deadEntity.location);
     } catch {
+      if (debuglog) {
+        console.warn("Failed Drop, queing");
+      }
       QueueLootDrop(deadEntity.dimension, deadEntity.location, item, Date.now());
     }
   }

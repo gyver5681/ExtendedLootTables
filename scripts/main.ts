@@ -12,7 +12,7 @@ import { MinecraftDimensionTypes } from "@minecraft/vanilla-data";
 import LootTablePool from "./LootTablePool";
 
 // Constants
-export const debuglog: boolean = true;
+export const debuglog: boolean = false;
 const EventNamespace: string = "ExtLootTables";
 const ELTregisterAddon: string = `${EventNamespace}:registerAddon`;
 const ELTaddLootEntry: string = `${EventNamespace}:addLootEntry`;
@@ -35,6 +35,9 @@ function SendResponse(command: string): void {
 
 function EntityDieEventHandler(event: EntityDieAfterEvent): void {
   const EntityID = event.deadEntity.typeId;
+  if (debuglog) {
+    console.warn(`${EntityID} Died`);
+  }
   if (g_MobLootEntries.has(EntityID)) {
     if (debuglog) {
       console.warn(`${EntityID} Died`);
@@ -55,8 +58,6 @@ function ExtLootTableEventHandler(event: ScriptEventCommandMessageAfterEvent): v
   if (event.sourceType === ScriptEventSource.Server) {
     switch (event.id) {
       // Register an Addon
-      // ExtLootTables:registerAddon CallbackNamespace Callback.ID
-      // CallbackNamespace:registerAddonResponse { "rc": 0 }
       case ELTregisterAddon: {
         if (debuglog) {
           console.warn(`Received ${ELTregisterAddon}`);
@@ -71,9 +72,6 @@ function ExtLootTableEventHandler(event: ScriptEventCommandMessageAfterEvent): v
         break;
       }
       // Add a Loot Entry
-
-      // ExtLootTables:addLootEntry callback.ID minecraft:slime { "rolls": 1, "entries": [ { "type": "item", "name": "moremobheads:slime_head", "weight": 1 } ], "conditions": [ { "condition": "killed_by_player" }, { "condition": "random_chance_with_looting", "chance": 0.925, "looting_multiplier": 0.02 } ] }
-      // CallbackNamespace:AddLootEntryResponse { "rc": returncode }
       case ELTaddLootEntry: {
         if (debuglog) {
           console.warn(`Received ${ELTaddLootEntry}`);
