@@ -83,20 +83,173 @@ No changes will be made to the existing vanilla loot tables, these additional en
 Currently supported vanilla conditions:
 
 - "has_mark_variant"
-- "has_variant"
-- "killed_by_player_or_pets"
-- "random_chance"
-- "killed_by_player"
-- "random_chance_with_looting"
+This condition checks if the entity has a specific mark variant.
 
-Supported extended condition
+```json
+{
+  "condition": "has_mark_variant",
+  "value": 0,
+  "operator": "!=",
+  "not": true
+}
+```
+
+- "has_variant"
+This condition checks if the entity has a specific variant.
+
+```json
+{
+  "condition": "has_variant",
+  "value": 0,
+  "operator": "!=",
+  "not": true
+}
+```
+
+- "killed_by_player_or_pets"
+This condition checks if the entity was killed by a player or their pet.
+```json
+{
+  "condition": "killed_by_player_or_pets",
+  "not": true
+}
+```
+
+- "random_chance"
+This condition applies with a random chance.
+```json
+{
+  "condition": "random_chance",
+  "chance": 0.25
+}
+```
+
+- "killed_by_player"
+This condition checks if the entity was killed by a player.
+```json
+{
+  "condition": "killed_by_player",
+  "not": true
+}
+```
+
+- "random_chance_with_looting"
+This condition applies with a random chance, increased by the killer's looting level.
+```json
+{
+  "condition": "random_chance_with_looting",
+  "chance": 0.1,
+  "looting_multiplier": 0.15
+}
+```
+
+Supported extended conditions
 
 - "has_component"
+This condition checks if the entity has a specific component.
+```json
+{
+  "condition": "has_component",
+  "id": "valuable_component",
+  "not": true
+}
+```
+
 - "has_property"
+This condition checks if the entity has a specific property with a specific value.
+```json
+{
+  "condition": "has_property",
+  "id": "is_rare",
+  "value": true,
+  "operator": "!=",
+  "not": true
+}
+```
+
 - "has_tag"
+This condition checks if the entity has a specific tag.
+```json
+{
+  "condition": "has_tag",
+  "id": "boss_mob",
+  "not": true
+}
+```
+
 - "or"
+This condition checks if any of the specified conditions are true.
+```json
+{
+  "condition": "or",
+  "conditions": [
+    {
+      "condition": "has_component",
+      "id": "valuable_component"
+    },
+    {
+      "condition": "has_tag",
+      "id": "boss_mob"
+    }
+  ],
+  "not": true
+}
+```
+
 - "color_component"
+This condition checks if the entity has a specific color component.
+```json
+{
+  "condition": "color_component",
+  "value": 0,
+  "operator": "!=",
+  "not": true
+}
+```
+
 - "bool_property"
+This condition checks if the entity has a specific boolean property with a specific value.
+```json
+{
+  "condition": "bool_property",
+  "id": "is_active",
+  "operator": "!=",
+  "not": true
+}
+```
+
 - "string_property"
+This condition checks if the entity has a specific string property with a specific value.
+```json
+{
+  "condition": "string_property",
+  "id": "name",
+  "value": "special_item",
+  "operator": "!=",
+  "not": true
+}
+```
+
 - "number_property"
+This condition checks if the entity has a specific numeric property within a certain range.
+```json
+{
+  "condition": "number_property",
+  "id": "level",
+  "value": 15,
+  "operator": "!=",
+  "not": true
+}
+```
+
 - "is_named"
+This condition checks if the entity has a specific name.
+```json
+
+{
+  "condition": "is_named",
+  "id": "special_entity",
+  "operator": "!=",
+  "not": true
+}
+```
